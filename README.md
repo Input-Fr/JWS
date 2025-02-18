@@ -1,45 +1,40 @@
 # Microservices Architecture - Quarkus, Kafka & Hibernate
 
 ## Overview
-This diagram represents a **Java microservices architecture** using **Quarkus** for REST APIs, **Kafka** for asynchronous messaging, and **Hibernate** for database persistence.
+This project is a **Java backend architecture** built using **microservices**. It leverages **Quarkus** for REST APIs, **Kafka** for asynchronous messaging, and **Hibernate** for database persistence.
 
-```mermaid
-graph LR
-    %% Define node styles
-    classDef microservice fill:#ADD8E6,stroke:#000,stroke-width:1px;
-    classDef db fill:#D3D3D3,stroke:#000,stroke-width:1px;
-    classDef api fill:#90EE90,stroke:#000,stroke-width:1px;
-    
-    %% Microservices
-    Inventory["Inventory Service"]:::microservice
-    ItemProducer["Item Producer Service"]:::microservice
+## Technologies Used
+- **Quarkus**: Lightweight Java framework optimized for microservices and cloud.
+- **Kafka**: Message broker for event-driven communication.
+- **Hibernate ORM**: Object-relational mapping for database interaction.
+- **REST API**: Exposes endpoints for client-server communication.
+- **DTO (Data Transfer Object)**: Standardized data exchange format.
 
-    %% Kafka Broker
-    Kafka["Kafka Broker"]:::db
+## Architecture Overview
+This system follows a modular architecture consisting of multiple **microservices** that communicate through **Kafka** and expose a REST API via Quarkus.
 
-    %% Database
-    Database["Database (PostgreSQL/MySQL)"]:::db
+### **1. Microservices**
+- **Inventory Service**: Manages stock levels and publishes updates via Kafka.
+- **Item Producer Service**: Produces items and sends events to Kafka.
+- **Additional Services**: Can be extended as needed.
 
-    %% API Layer
-    API["REST API (Quarkus)"]:::api
+### **2. Communication & Integration**
+- **Kafka** is used to handle events like `new_inventory_state` and `payment_feed`.
+- **REST API** endpoints are exposed via **Quarkus** to enable external interactions.
 
-    %% Software Layers
-    Presentation["Presentation Layer"]:::microservice
-    Service["Service Layer"]:::microservice
-    Data["Data Layer (Hibernate)"]:::db
+### **3. Software Layers**
+- **Presentation Layer**: Handles REST API requests.
+- **Service Layer**: Implements business logic.
+- **Data Layer**: Uses Hibernate ORM for database persistence.
 
-    %% Relationships
-    Inventory -->|new_inventory_state| Kafka
-    ItemProducer -->|payment_feed| Kafka
-    Kafka --> Inventory
-    Kafka --> ItemProducer
+### **4. External Components**
+- **Database (PostgreSQL/MySQL)**: Stores inventory and item data.
+- **Client Applications**: Interact with the backend via REST API.
 
-    API -->|REST| Inventory
-    API -->|REST| ItemProducer
+## Installation & Setup
 
-    Inventory --> Service
-    ItemProducer --> Service
-
-    Service --> Data
-    Data --> Database
-```
+### **Prerequisites**
+- **Java 17+**
+- **Maven**
+- **Docker (for Kafka)**
+- **PostgreSQL/MySQL (for data persistence)**

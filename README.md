@@ -1,7 +1,7 @@
 # Microservices Architecture - Quarkus, Kafka & Hibernate
 
 ## Overview
-This project is a **Java backend architecture** built using **microservices**. It leverages **Quarkus** for REST APIs, **Kafka** for asynchronous messaging, and **Hibernate** for database persistence.
+This project is a **Java backend application** built using **microservices architecture**. It uses **Quarkus** for REST APIs, **Kafka** for asynchronous messaging, and **Hibernate** for database persistence.
 
 ## Technologies Used
 - **Quarkus**: Lightweight Java framework optimized for microservices and cloud.
@@ -19,8 +19,8 @@ This system follows a modular architecture consisting of multiple **microservice
 - **Additional Services**: Can be extended as needed.
 
 ### **2. Communication & Integration**
-- **Kafka** is used to handle events like `new_inventory_state` and `payment_feed`.
-- **REST API** endpoints are exposed via **Quarkus** to enable external interactions.
+- **Kafka** is used to handle events like `collect_item` and `reset_inventory`.
+- **REST API** endpoints are exposed via **Quarkus** to enable client interactions.
 
 ### **3. Software Layers**
 - **Presentation Layer**: Handles REST API requests.
@@ -34,7 +34,7 @@ This system follows a modular architecture consisting of multiple **microservice
 ## Installation & Setup
 
 ### **Prerequisites**
-- **Java 17+**
+- **Java 21**
 - **Maven**
 - **Docker (for Kafka)**
-- **PostgreSQL/MySQL (for data persistence)**
+- **PostgreSQL (for data persistence)**
